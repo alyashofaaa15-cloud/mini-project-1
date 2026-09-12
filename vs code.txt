@@ -1,0 +1,98 @@
+# PROGRAM PENDATAAN ACARA KAMPUS
+
+acara = []
+
+while True:
+    print("\n==============================")
+    print("     DATA ACARA KAMPUS")
+    print("==============================")
+    print("1. Tambah Acara")
+    print("2. Lihat Acara")
+    print("3. Ubah Acara")
+    print("4. Hapus Acara")
+    print("5. Keluar")
+
+    pilihan = input("Pilih menu (1-5): ")
+
+    # TAMBAH DATA
+    if pilihan == "1":
+        print("\n--- TAMBAH DATA ACARA ---")
+
+        nama = input("Nama acara: ")
+        tanggal = input("Tanggal acara: ")
+        lokasi = input("Lokasi acara: ")
+
+        acara.append([nama, tanggal, lokasi])
+
+        print("Data acara berhasil ditambahkan.")
+
+    # LIHAT DATA
+    elif pilihan == "2":
+        print("\n--- DATA ACARA ---")
+
+        if len(acara) == 0:
+            print("Belum ada data acara.")
+        else:
+            for i in range(len(acara)):
+                print("\nData ke-", i + 1)
+                print("Nama    :", acara[i][0])
+                print("Tanggal :", acara[i][1])
+                print("Lokasi  :", acara[i][2])
+
+    # UBAH DATA
+    elif pilihan == "3":
+        print("\n--- UBAH DATA ACARA ---")
+
+        if len(acara) == 0:
+            print("Belum ada data acara.")
+        else:
+            for i in range(len(acara)):
+                print(i + 1, ".", acara[i][0])
+
+            try:
+                nomor = int(input("Pilih nomor acara yang ingin diubah: "))
+
+                if nomor >= 1 and nomor <= len(acara):
+                    nama = input("Nama acara baru: ")
+                    tanggal = input("Tanggal acara baru: ")
+                    lokasi = input("Lokasi acara baru: ")
+
+                    acara[nomor - 1] = [nama, tanggal, lokasi]
+
+                    print("Data acara berhasil diubah.")
+                else:
+                    print("Nomor acara tidak ditemukan.")
+
+            except ValueError:
+                print("Input harus berupa angka.")
+
+    # HAPUS DATA
+    elif pilihan == "4":
+        print("\n--- HAPUS DATA ACARA ---")
+
+        if len(acara) == 0:
+            print("Belum ada data acara.")
+        else:
+            for i in range(len(acara)):
+                print(i + 1, ".", acara[i][0])
+
+            try:
+                nomor = int(input("Pilih nomor acara yang ingin dihapus: "))
+
+                if nomor >= 1 and nomor <= len(acara):
+                    acara.pop(nomor - 1)
+                    print("Data acara berhasil dihapus.")
+                else:
+                    print("Nomor acara tidak ditemukan.")
+
+            except ValueError:
+                print("Input harus berupa angka.")
+
+    # KELUAR
+    elif pilihan == "5":
+        print("\nProgram selesai.")
+        break
+
+    # VALIDASI MENU
+    else:
+        print("Pilihan menu tidak tersedia. Silakan pilih 1-5.")
